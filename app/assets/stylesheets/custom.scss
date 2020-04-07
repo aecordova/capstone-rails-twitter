@@ -8,14 +8,18 @@ body {
   header {
     nav {
       a {
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 100%;
         .fa {
           font-size: 25px;
           margin-right: 5px;
           width: 30px;
           text-align: center;
         }
-        font-size: 20px;
-        font-weight: bold;
+      }
+      a:hover {
+        background-color: #282828;
       }
     }
   }
