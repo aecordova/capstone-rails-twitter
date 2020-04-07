@@ -3,8 +3,11 @@
   <head>
     <%= render 'layouts/head' %>
   <body>
-    <%= render 'layouts/header' %>
-    <%= yield %>
+    <div class= "d-flex">
+        <%= render 'layouts/header' %>
+        <%= yield %>
+    </div>
+
     <%= render 'layouts/js_for_bootstrap' %>
   </body>
 </html>
