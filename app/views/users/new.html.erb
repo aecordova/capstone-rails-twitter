@@ -1,9 +1,19 @@
-<div class="col-6 pt-3">
-  <h1 class = 'h2 text-center' > sign up to holler!</h1>
-  <%= form_with model: @user do |f| %>
-    <div class="form-group pt-1 text-center">
-      <%= f.text_field 'username: ', placeholder: "username", class: 'form-control bg-light rounded-pill' %> 
-      <%= f.submit 'Sign Up!', class: 'btn btn-primary rounded-pill mt-1'%> 
-    </div>
-  <% end %>
+<div class="col-6 pt-3  d-flex flex-column align-items-center">
+  <a class="navbar-brand my-3" href="#">
+    <img src="https://getbootstrap.com/docs/4.1/assets/img/bootstrap-stack.png" width="80" height="80" alt="">
+  </a>
+  <h1 class = 'h1 text-center'>
+    <span class="h2 px-2">Sign up to </span> 
+    <b>Holler!</b>
+  </h1>
+  <span>You just need to pick a user name!</span>  
+  <div class="my-3">
+    <%= form_with model: User.new, url: signup_path, local:true do |f| %>
+      <div class="input-group">
+        <%= f.text_field 'username', placeholder: "username", class: 'form-control bg-light rounded-pill' %> 
+        <%= f.submit 'Sign Up!', class: 'btn btn-primary rounded-pill '%> 
+      </div>
+    <% end %>
+  </div>
+
 </div>
