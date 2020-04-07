@@ -1,0 +1,9 @@
+<div class="col-4 mx-auto pt-3">
+  <h1 class = 'h2 text-center' > sign up to holler!</h1>
+  <%= form_with model: @user do |f| %>
+    <div class="form-group pt-1 text-center">
+      <%= f.text_field 'username: ', placeholder: "username", class: 'form-control bg-light rounded-pill' %> 
+      <%= f.submit 'Sign Up!', class: 'btn btn-primary rounded-pill mt-1'%> 
+    </div>
+  <% end %>
+</div>
