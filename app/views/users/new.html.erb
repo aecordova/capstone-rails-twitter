@@ -10,10 +10,9 @@
   <div class="my-3">
     <%= form_with model: User.new, url: signup_path, local:true do |f| %>
       <div class="input-group">
-        <%= f.text_field 'username', placeholder: "username", class: 'form-control bg-light rounded-pill' %> 
+        <%= f.text_field 'username', placeholder: "username", class: 'form-control bg-light text-white rounded-pill' %> 
         <%= f.submit 'Sign Up!', class: 'btn btn-primary rounded-pill '%> 
       </div>
     <% end %>
   </div>
-
 </div>

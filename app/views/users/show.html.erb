@@ -1,0 +1,29 @@
+<div id="profile">
+  <div id="cover_pic">
+    <%= image_tag 'https://i1.wp.com/entertainmentmesh.com/wp-content/uploads/2015/07/world-journey-fb-cover-photo.jpg', height: '240', width: '650' %>
+  </div>
+  <div id="profile_pic">
+    <%= image_tag 'https://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic-300x300.png', height: '100', width: '100'%>
+  </div>
+ <div id="profile_data" class="pl-2">
+  <h2>
+  <b><%# @user.name %></b>
+  </h2>
+  <h4><%# @user.username %></h4>
+  <p><%# @user.bio %></p>
+  <div class = "d-flex">
+    <span class= "pr-3">
+      <i class="fa fa-map-marker"></i>
+      <%# @user.location %>
+    </span>
+    <span class= "pr-3">
+      <i class="fa fa-birthday-cake"></i>
+      Born: <%# @user.birth_date %>
+    </span>
+    <span class= "pr-3">
+      <i class="fa fa-calendar"></i>
+      Joined: <%# time_in_words(@user.created_at) %> ago.
+    </span>
+  </div>
+ </div>
+</div>
