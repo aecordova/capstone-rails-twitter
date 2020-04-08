@@ -2,19 +2,13 @@
   <a class="navbar-brand my-3" href="#">
     <img src="https://getbootstrap.com/docs/4.1/assets/img/bootstrap-stack.png" width="80" height="80" alt="">
   </a>
-  <h1 class = 'h1 text-center'>
-    <span class="h2 px-2">Sign up to </span> 
-    <b>Holler!</b>
-  </h1>
-  <span>Create your account:</span>  
   <div class="my-3 text-center col-6">
-    <%= form_with model: User.new, url: signup_path, local:true do |f| %>
+    <%= form_with url: login_path, local:true do |f| %>
       <div class="form-group">
         <%= f.text_field 'username', placeholder: "username", class: 'form-control bg-light text-white rounded-pill text-center' %> 
         <%= f.password_field 'password', placeholder: "password", class: 'form-control bg-light text-white rounded-pill text-center' %> 
-        <%= f.password_field 'password_confirmation', placeholder: "confirm password", class: 'form-control bg-light text-white rounded-pill text-center' %> 
       </div>
-        <%= f.submit 'Sign Up!', class: 'btn btn-primary rounded-pill w-100'%> 
+        <%= f.submit 'Log In!', class: 'btn btn-primary rounded-pill w-100'%> 
     <% end %>
   </div>
 </div>

@@ -5,25 +5,29 @@
   <div id="profile_pic">
     <%= image_tag 'https://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic-300x300.png', height: '100', width: '100'%>
   </div>
- <div id="profile_data" class="pl-2">
-  <h2>
-  <b><%# @user.name %></b>
-  </h2>
-  <h4><%# @user.username %></h4>
-  <p><%# @user.bio %></p>
-  <div class = "d-flex">
-    <span class= "pr-3">
-      <i class="fa fa-map-marker"></i>
-      <%# @user.location %>
-    </span>
-    <span class= "pr-3">
-      <i class="fa fa-birthday-cake"></i>
-      Born: <%# @user.birth_date %>
-    </span>
-    <span class= "pr-3">
-      <i class="fa fa-calendar"></i>
-      Joined: <%# time_in_words(@user.created_at) %> ago.
-    </span>
+  <div id="profile_data" class="p-2 border-bottom border-light">
+    <h2>
+      <b><%= @user.name %></b>
+    </h2>
+    <h4><%= @user.username %></h4>
+    <p><%= @user.bio %></p>
+    <div class = "d-flex justify-content-end">
+      <% unless @user.location.nil? %>
+        <%= content_tag :span, class: 'pr-3' do %>
+          <%= content_tag :i, '', class:  'fa fa-map-marker' %>
+          <%= @user.location %>
+        <% end  %>
+      <% end %>
+      <% unless @user.birth_date.nil? %>
+        <%= content_tag :span, class: 'pr-3' do %>
+          <%= content_tag :i, '', class:  'fa fa-birthday_cake' %>
+          <%= @user.birth_date %>
+        <% end  %>
+      <% end %>
+      <span class= "pr-3">
+        <i class="fa fa-calendar"></i>
+        Joined <%= time_ago_in_words(@user.created_at) %> ago.
+      </span>
+    </div>
   </div>
- </div>
 </div>
