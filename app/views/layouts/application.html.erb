@@ -2,11 +2,15 @@
 <html>
   <head>
     <%= render 'layouts/head' %>
-  <body>
-    <div class= "d-flex">
-        <%= render 'layouts/header' %>
-        <%= yield %>
-    </div>
-    <%= render 'layouts/js_for_bootstrap' %>
-  </body>
-</html>
+    <body>
+      <div class= "container-fluid d-flex">
+        <%= render 'layouts/header' if logged_in? %>
+        <div class="main px-0 mx-auto w-100">
+          <%= render 'layouts/sect_header' %>
+          <%= yield %>
+        
+        </div>
+      </div>
+      <%= render 'layouts/js_for_bootstrap' %>
+    </body>
+  </html>

@@ -1,12 +1,11 @@
-<header role = 'banner' class = "col-3">
-<nav class="navbar col-7 mx-auto px-2 py-3">
-<% if logged_in? %>
+<header role = 'banner' class = "col-2">
+<nav class="navbar">
   <a class="navbar-brand p-1" href="#">
     <img src="https://getbootstrap.com/docs/4.1/assets/img/bootstrap-stack.png" width="50" height="50" alt="">
   </a>
 </nav>
 
-  <nav class="nav nav-pills flex-column col-7 mx-auto px-0">
+  <nav class="nav nav-pills flex-column mx-auto px-0">
     <a class="nav-item nav-link rounded-pill" href="#">
       <i class="fa fa-home"></i> Home
     </a>
@@ -23,8 +22,7 @@
       <i class="fa fa-bar-chart"></i> Stats
     </a>
     <a class="nav-item nav-link rounded-pill" href=<%= logout_path %>>
-      <i class="fa fa-bar-chart"></i> Logout
+      Logout
     </a>
   </nav>
-<% end  %>
 </header>
