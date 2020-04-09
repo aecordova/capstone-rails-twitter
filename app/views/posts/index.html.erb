@@ -1,13 +1,14 @@
 <% provide(:sect_header, "> Home") %>
-<div>
-
-</div>
-
-<div>
-  <%= form_with model: Post.new, url: posts_path, local:true do |f| %>
-    <div class="form-group">
-      <%= f.text_area :content, placeholder: "Holler something!!", class: 'form-control bg-light text-white rounded-pill' %>
-    </div>
-    <%= f.submit 'Holler!', class: 'btn btn-primary rounded-pill'%>
-  <% end %>
+<div class="row m-0 py-2">
+  <div class="badge_pic p-0 text-center col-2">
+    <%= image_tag 'https://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic-300x300.png' %>
+  </div>
+  <div class="col-10 p-0">
+    <%= form_with model: Post.new, url: posts_path, local:true do |f| %>
+      <div class="form-group text-right">
+        <%= f.text_area :content, placeholder: "Holler something!!", class: 'form-control bg-light text-white', rows:'3' %>
+        <%= f.submit 'Holler!', class: 'btn btn-primary col-2 mt-1 rounded-pill'%>
+      </div>
+    <% end %>
+  </div>
 </div>

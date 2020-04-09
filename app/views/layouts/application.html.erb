@@ -7,8 +7,10 @@
         <%= render 'layouts/header' if logged_in? %>
         <div class="main px-0 mx-auto w-100">
           <%= render 'layouts/sect_header' %>
-          <%= yield %>
-        
+          <%= yield %>    
+        </div>
+        <div class="col-3">
+          sidebar
         </div>
       </div>
       <%= render 'layouts/js_for_bootstrap' %>

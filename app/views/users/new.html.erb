@@ -7,7 +7,7 @@
     <b>Holler!</b>
   </h1>
   <span>Create your account:</span>  
-  <div class="my-3 text-center col-6">
+  <div class="my-3 text-center col-md-4">
     <%= form_with model: User.new, url: signup_path, local:true do |f| %>
       <div class="form-group">
         <%= f.text_field 'username', placeholder: "username", class: 'form-control bg-light text-white rounded-pill text-center' %> 
