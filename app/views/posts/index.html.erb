@@ -1,18 +1,9 @@
 <% provide(:sect_header, "> Home") %>
 <div class="row m-0 py-2 border-bottom border-light">
-  <div class="badge_pic p-0 text-center col-1">
-    <%= image_tag 'https://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic-300x300.png' %>
-  </div>
-  <div class="col-11 p-0">
-    <%= form_with model: Post.new, url: posts_path, local:true do |f| %>
-      <div class="form-group text-right">
-        <%= f.text_area :content, placeholder: "Holler something!!", class: 'form-control bg-light text-white', rows:'3' %>
-        <%= f.submit 'Holler!', class: 'btn btn-primary col-3 mt-1 rounded-pill'%>
-      </div>
-    <% end %>
-  </div>
+  <%= render 'shared/new_post' %>
 </div>
 <div>
-Posts section
-
+  <% @t_posts.each do |p|  %>
+  <%= render 'shared/post', post: p %>
+  <% end %>
 </div>

@@ -15,11 +15,16 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    user_posts
   end
   
   private
 
   def user_params
     params.require(:user).permit(:username, :password, :password_confirmation)
+  end
+
+  def user_posts
+    @u_posts ||= current_user.posts
   end
 end

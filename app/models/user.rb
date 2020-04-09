@@ -3,6 +3,6 @@ class User < ApplicationRecord
   has_secure_password
 
   def timeline_posts
-     
+    posts
   end
 end
