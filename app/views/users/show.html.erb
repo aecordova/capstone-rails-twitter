@@ -7,10 +7,10 @@
     <%= image_tag 'https://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic-300x300.png'%>
   </div>
   <div id="profile_data" class="p-2 border-bottom border-light">
-    <h2>
-      <b><%= @user.name %></b>
+    <h2 class="text-white">
+      <b><%= @user.name || @user.username %></b>
     </h2>
-    <h4><%= @user.username %></h4>
+    <h4 class="text-light-gray"><%= @user.username %></h4>
     <p><%= @user.bio %></p>
     <div class = "d-flex justify-content-end">
       <% unless @user.location.nil? %>
