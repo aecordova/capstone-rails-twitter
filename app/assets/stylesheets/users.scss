@@ -25,6 +25,24 @@
       height: 100%;
     }
   }
+  #profile_data{
+    .btn {
+      width: 100px;
+    }
+    .following:hover {
+      border-color: red;
+      color: red;
+      background-color: #000;
+      .new_tag {
+        .old_tag {
+          display: none;
+        }
+      }
+      .new_tag::after{
+        content: "Unfollow";
+      }
+    }
+  }
   i {
     background-color: #282828;
     line-height: 25px;
@@ -43,3 +61,4 @@
     padding: 2px;
   }
 }
+
