@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   
   resources :posts, only: [:create]
   get '/home', to: 'posts#index'
+
+  post '/follow', to: 'user_follows#create'
+  delete '/follow', to: 'user_follows#destroy'
   
 end
 

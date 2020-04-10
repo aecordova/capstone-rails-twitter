@@ -7,9 +7,16 @@
     <%= image_tag 'https://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic-300x300.png'%>
   </div>
   <div id="profile_data" class="p-2 border-bottom border-light">
-    <h2 class="text-white">
-      <b><%= @user.name || @user.username %></b>
-    </h2>
+    <div class="text-white d-flex justify-content-between align-items-center">
+      <h2>
+        <b><%= @user.name || @user.username %></b>
+      </h2>
+      <% if conditions_to_follow? @user %>
+        <%= link_to 'Follow', follow_path(id: @user.id), method: :post, class:"btn btn-outline-primary rounded-pill" %>
+      <% elsif current_user.follows? @user %>
+        <%= link_to 'Following', follow_path(id: @user.id), method: :delete, class:"btn btn-outline-info rounded-pill" %>
+      <% end %>
+    </div>
     <h4 class="text-light-gray"><%= @user.username %></h4>
     <p><%= @user.bio %></p>
     <div class = "d-flex justify-content-end">
@@ -32,8 +39,8 @@
     </div>
   </div>
   <div>
-      <% @u_posts.each do |p| %>
+    <% @u_posts.each do |p| %>
       <%= render 'shared/post', post: p %>
-      <% end %>
+    <% end %>
   </div>
 </div>

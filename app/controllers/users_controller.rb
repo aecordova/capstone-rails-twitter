@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    user_posts
+    @u_posts = @user.posts.newest_first
   end
   
   private
@@ -24,7 +24,4 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :password, :password_confirmation)
   end
 
-  def user_posts
-    @u_posts ||= current_user.posts
-  end
 end
