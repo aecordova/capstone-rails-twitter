@@ -1,0 +1,6 @@
+<% if current_user.follows? u %>
+  <%# content_tag :p, 'TRUE' %>
+  <%= link_to 'Following', follow_path(id: u.id), remote: true, method: 'delete', class:'btn btn-outline-secondary rounded-pill js-following' %>
+<% else %>
+  <%= link_to 'Follow', follow_path(id: u.id), remote: true, method: 'post', class:'btn btn-outline-primary rounded-pill js-follow' %>
+<% end %>

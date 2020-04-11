@@ -2,7 +2,10 @@ class UserFollowsController < ApplicationController
   
   def create
     if current_user.follow(params[:id])
-      flash[:success] = "Yay! You'll now see posts from this user on your timeline"
+      @msg = 'Following'
+    end
+    respond_to do |format|
+      format.js {render layout: false}
     end
   end
   

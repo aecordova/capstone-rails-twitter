@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  
+  class OnlyAjaxCalls
+    def matches?(req)
+      req.xhr?
+    end
+  end
+
   resources :users, only: [:show]
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'

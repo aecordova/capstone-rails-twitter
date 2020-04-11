@@ -3,7 +3,7 @@ class UserFollow < ApplicationRecord
   belongs_to :followed_user, class_name: 'User'
 
   def self.mk_follower(user_id, f_user_id)
-    return if where(user_id: user_id, followed_user_id: f_user_id).exists?
+    raise 'error' && return if where(user_id: user_id, followed_user_id: f_user_id).exists?
 
     create(user_id: user_id, followed_user_id: f_user_id)
   end
