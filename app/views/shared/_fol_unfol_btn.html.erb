@@ -1,6 +1,22 @@
-<% if current_user.follows? u %>
-  <%# content_tag :p, 'TRUE' %>
-  <%= link_to 'Following', follow_path(id: u.id), remote: true, method: 'delete', class:'btn btn-outline-secondary rounded-pill js-following' %>
-<% else %>
-  <%= link_to 'Follow', follow_path(id: u.id), remote: true, method: 'post', class:'btn btn-outline-primary rounded-pill js-follow' %>
-<% end %>
+<div class "d-flex">
+  <%= link_to 'Following', 
+               follow_path(id: u.id), 
+               id: 'unfollow-btn',
+               data: { show: 'false' }, 
+               remote: true,
+               method: 'delete', 
+               class: ("btn btn-outline-secondary rounded-pill js-following" + 
+               unless current_user.follows?(u) then " hide" else "" end)  %>
+
+  <%= link_to 'Follow', 
+               follow_path(id: u.id),
+               id: 'follow-btn',
+               remote: true, 
+               class: ("btn btn-outline-primary rounded-pill js-follow" + 
+               if current_user.follows?(u) then " hide" else "" end)  %>
+  <script>
+  $(".hide").hide();
+  </script>
+
+
+</div>

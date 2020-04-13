@@ -1,6 +1,5 @@
-
 $(document).ready(function(){
-  $('.js-following').hover(
+  $('#unfollow-btn').hover(
     function(){
      $(this).html('Unfollow')
     },
@@ -8,34 +7,26 @@ $(document).ready(function(){
       $(this).html('Following')
     }
   );
-  
-  $('.js-follow').click(function(event){
-    event.preventDefault();
-    r = $.ajax(this.href,{
-      method: 'POST',
-    });
-    r.done(function(){
-      $('.js-follow').html("Following")
-                     .addClass("btn-outline-secondary js-following")
-                     .attr('data-method', 'delete')
-                     .removeClass('btn-outline-primary')
-                     .removeClass('js-follow');
+  $("#follow-btn").click(function(e){
+    e.preventDefault();
+    $.ajax(this.href, {
+      method: 'post',
+      success: function(){
+        $('#follow-btn').hide();
+        $('#unfollow-btn').removeClass("hide");
+        $('#unfollow-btn').show();
+      }
     });
   });
-
-  $('.js-following').click(function(event){
-    event.preventDefault();
-    r = $.ajax({
-      url: '/follow'
-      data: {id: $(this).data)}
-      method: 'POST',
-    });
-    r.done(function(){
-      $('.js-follow').html("Follow")
-                     .addClass("btn-outline-primary js-follow")
-                     .attr('data-method', 'post')
-                     .removeClass('btn-outline-secondary')
-                     .removeClass('js-following');
+  $("#unfollow-btn").click(function(e){
+    e.preventDefault();
+    $.ajax(this.href, {
+      method: 'delete',
+      success: function(){
+        $('#unfollow-btn').hide();
+        $('#follow-btn').removeClass("hide");
+        $('#follow-btn').show();
+      }
     });
   });
 });
