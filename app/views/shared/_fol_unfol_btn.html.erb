@@ -2,9 +2,7 @@
   <%= link_to 'Following', 
                follow_path(id: u.id), 
                id: 'unfollow-btn',
-               data: { show: 'false' }, 
                remote: true,
-               method: 'delete', 
                class: ("btn btn-outline-secondary rounded-pill js-following" + 
                unless current_user.follows?(u) then " hide" else "" end)  %>
 
@@ -14,9 +12,4 @@
                remote: true, 
                class: ("btn btn-outline-primary rounded-pill js-follow" + 
                if current_user.follows?(u) then " hide" else "" end)  %>
-  <script>
-  $(".hide").hide();
-  </script>
-
-
 </div>

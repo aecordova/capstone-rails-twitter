@@ -1,12 +1,11 @@
 <div class="post row m-0 py-2 border-bottom border-light">
-  <div class="badge_pic p-0 text-center col-1">
-  <%= link_to image_tag('https://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic-300x300.png'), post.user %>
-
+  <div class="badge_pic text-center col-1">
+    <%= link_to image_tag('https://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic-300x300.png'), post.user %>
   </div>
-  <div class="col-11 p-0">
+  <div class="col-11">
     <div>
-      <span class=" h4 font-weight-bold text-white">
-        <%= link_to post.user.name || post.user.username, post.user, class:'text-decoration-none link-white'%>
+      <span class="post-name h4 font-weight-bold text-white">
+        <%= link_to post.user.name || post.user.username, post.user, class:'text-decoration-none'%>
       </span>
       <span>
         <%= post.user.username unless post.user.name.nil? %>
@@ -18,5 +17,14 @@
     <div>
       <%= post.content %>
     </div>
+    <ul class = "post-actions nav mx-auto col-6 d-flex py-2 justify-content-between">
+      <li>
+        <i class="fa fa-heart-o"></i>
+        <i class="fa fa-heart"></i> 55
+      </li>
+      <li>
+        <i class="fa fa-comment-o"></i> 4
+      </li>
+    </ul>
   </div>
 </div>

@@ -13,12 +13,15 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
-  
+
   resources :posts, only: [:create]
   get '/home', to: 'posts#index'
 
   post '/follow', to: 'user_follows#create'
   delete '/follow', to: 'user_follows#destroy'
-  
+
+  post '/like', to: 'post_likes#create'
+  delete '/like', to: 'post_likes#destroy'
+
 end
 

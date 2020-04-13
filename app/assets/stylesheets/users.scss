@@ -17,6 +17,7 @@
       height: 100px;
     }
   }
+
   #cover_pic{
     width: 100%;
     height: 100%;
@@ -25,34 +26,22 @@
       height: 100%;
     }
   }
+
   #profile_data{
     .btn {
       width: 100px;
     }
-    .following:hover {
+    .js-following:hover {
       border-color: red;
       color: red;
       background-color: #000;
-      .new_tag {
-        .old_tag {
-          display: none;
-        }
-      }
-      .new_tag::after{
-        content: "Unfollow";
-      }
     }
   }
   i {
     background-color: #282828;
-    line-height: 25px;
-    width: 25px;
-    height: 25px;
-    text-align: center;
-    border-radius: 100%;
-
   }
 }
+
 .badge_pic {
   img {
     border-radius: 30%;

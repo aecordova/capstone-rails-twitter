@@ -4,7 +4,7 @@
     <%= render 'layouts/head' %>
     <body>
       <div class= "container-fluid d-flex">
-        <%= content_tag :header, render('layouts/header'), class:'pr-0 col-2' if logged_in? %>
+        <%= content_tag :header, render('layouts/header'), class:'pr-0 col-3' if logged_in? %>
         <div class="main px-0 mx-auto w-100">
           <%= render 'layouts/sect_header' %>
           <%= yield %>    
