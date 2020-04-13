@@ -1,15 +1,11 @@
 <div class "d-flex">
-  <%= link_to 'Following', 
-               follow_path(id: u.id), 
-               id: 'unfollow-btn',
-               remote: true,
-               class: ("btn btn-outline-secondary rounded-pill js-following" + 
-               unless current_user.follows?(u) then " hide" else "" end)  %>
+  <%= button_tag 'Following', 
+               data: { url: follow_path(id: u.id) }, 
+               class: "unfollow-btn btn btn-outline-secondary rounded-pill js-following#{ " hide" unless current_user.follows? u }",
+               remote: true %>
 
-  <%= link_to 'Follow', 
-               follow_path(id: u.id),
-               id: 'follow-btn',
+  <%= button_tag 'Follow', 
+               data: { url: follow_path(id: u.id) }, 
                remote: true, 
-               class: ("btn btn-outline-primary rounded-pill js-follow" + 
-               if current_user.follows?(u) then " hide" else "" end)  %>
+               class: "follow-btn btn btn-outline-primary rounded-pill js-follow#{ " hide" if current_user.follows? u }"  %>
 </div>

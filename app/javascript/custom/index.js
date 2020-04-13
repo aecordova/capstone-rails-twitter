@@ -1,31 +1,60 @@
-$(document).ready(function(){
-  $('#unfollow-btn').hover(
-    function(){
-     $(this).html('Unfollow')
+$(document).on('turbolinks:load', function () {
+  $('.unfollow-btn').hover(
+    function () {
+      $(this).html('Unfollow')
     },
-    function(){
+    function () {
       $(this).html('Following')
     }
   );
-  $("#follow-btn").click(function(e){
+
+  $(".follow-btn").click(function (e) {
     e.preventDefault();
-    $.ajax(this.href, {
+    $.ajax(this.dataset.url.toString(), {
       method: 'post',
-      success: function(){
-        $('#follow-btn').hide();
-        $('#unfollow-btn').removeClass("hide");
-        $('#unfollow-btn').show();
+      success: function () {
+        $('.follow-btn').hide();
+        $('.unfollow-btn').removeClass("hide");
+        $('.unfollow-btn').show();
       }
     });
   });
-  $("#unfollow-btn").click(function(e){
+
+  $(".unfollow-btn").click(function (e) {
     e.preventDefault();
-    $.ajax(this.href, {
+    $.ajax(this.dataset.url.toString(), {
       method: 'delete',
+      success: function () {
+        $('.unfollow-btn').hide();
+        $('.follow-btn').removeClass("hide");
+        $('.follow-btn').show();
+      }
+    });
+  });
+
+  $(".like-btn").click(function (e) {
+    e.preventDefault();
+    $.ajax(this.dataset.url.toString(), {
+      method: 'post',
+      dataType: 'script',
+      success: function () {
+        $('.like-btn').hide();
+        $('.unlike-btn').removeClass("hide");
+        $('.unlike-btn').show();
+      }
+    });
+  });
+  
+  $(".unlike-btn").click(function (e) {
+    e.preventDefault();
+    //console.log(this.dataset.url)
+    $.ajax(this.dataset.url.toString(), {
+      method: 'delete',
+      dataType: 'script',
       success: function(){
-        $('#unfollow-btn').hide();
-        $('#follow-btn').removeClass("hide");
-        $('#follow-btn').show();
+        $('.unlike-btn').hide();
+        $('.like-btn').removeClass("hide");
+        $('.like-btn').show();
       }
     });
   });

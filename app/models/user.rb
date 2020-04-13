@@ -35,11 +35,18 @@ class User < ApplicationRecord
   end
 
   def like(post_id)
-    PostLike.like_post(id, post_id)    
-  end
-  
-  def unlike(post_id)
-    PostLike.unlike_post(id, post_id)    
+    return unless Post.where(id: post_id).exists?
+
+    PostLike.like_post(id, post_id) 
   end
 
+  def unlike(post_id)
+    return unless Post.where(id: post_id).exists?
+
+    PostLike.unlike_post(id, post_id)
+  end
+
+  def likes?(post_id)
+    post_likes.where(post_id: post_id).exists?
+  end
 end
