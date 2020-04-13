@@ -17,22 +17,30 @@ body {
   }
 
   header {
-    nav {
-      a,span {
-        font-size: 20px;
-        font-weight: bold;
-        border-radius: 100%;
-        .fa {
-          font-size: 25px;
-          margin-right: 5px;
-          width: 30px;
-          text-align: center;
+    .nav-container {
+      nav {
+        img {
+          margin: 0 auto;
+          height: 60px;
+          width: 60px;
         }
-      }
-      a:hover {
-        background-color: #282828;
-      }
+        a,span {
+          font-size: 20px;
+          font-weight: bold;
+          border-radius: 100%;
+          width: fit-content;
+          .fa {
+            font-size: 25px;
+            margin-right: 5px;
+            width: 30px;
+            text-align: center;
+          }
+        }
+        a:hover {
+          background-color: #282828;
+        }
     }
+  }
     #sect_header_nav{
       height: 74px;
     }

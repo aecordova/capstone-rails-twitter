@@ -5,4 +5,8 @@ class Post < ApplicationRecord
   has_many :likers, through: :post_likes, source: :user
 
   scope :newest_first, ->{ order('created_at desc') }
+
+  def like_ct
+    post_likes.count
+  end
 end

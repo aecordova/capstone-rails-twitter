@@ -1,26 +1,19 @@
-<nav class="navbar">
-  <a class="navbar-brand p-1" href="#">
-    <img src="https://getbootstrap.com/docs/4.1/assets/img/bootstrap-stack.png" width="50" height="50" alt="">
-  </a>
-</nav>
-  <nav class="nav nav-pills px-0 py-2">
-    <a class="nav-link rounded-pill" href=<%= home_path %>>
-      <i class="fa fa-home"></i> Home
-    </a>
+<div class= 'nav-container col-7 px-0'>
+  <nav class="navbar">
+    <%= link_to image_tag("https://getbootstrap.com/docs/4.1/assets/img/bootstrap-stack.png"), home_path, class: 'nav-brand' %>
+  </nav>
+  <nav class="nav nav-pills py-2 flex-column">
+    <%= link_to content_tag(:i,'', class:"fa fa-home")+"Home", home_path ,class: 'text-white pr-4 nav-link rounded-pill' %>
+    <%= link_to content_tag(:i,'', class:"fa fa-user")+"Profile", current_user ,class: 'text-white pr-4 nav-link rounded-pill' %>
+    <%= link_to content_tag(:i,'', class:"fa fa-sign-out")+"Log Out", logout_path , class: 'text-white pr-4 nav-link rounded-pill' %>
     <%# <a class="nav-link rounded-pill" href="#">
       <i class="fa fa-at"></i> Connect
     </a> %>
     <%# <a class="nav-link rounded-pill" href="#">
       <i class="fa fa-hashtag"></i> Discover
     </a> %>
-    <a class="nav-link rounded-pill" href=<%= user_path(current_user) %>>
-      <i class="fa fa-user"></i> Profile
-    </a>
     <%# <a class="nav-link rounded-pill" href="#">
       <i class="fa fa-bar-chart"></i> Stats
     </a> %>
-    <a class="nav-link rounded-pill" href=<%= logout_path %>>
-      <i class="fa fa-sign-out"></i> Logout
-    </a>
   </nav>
-
+</div>

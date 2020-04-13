@@ -19,7 +19,7 @@
     </div>
     <ul class = "post-actions nav mx-auto col-6 d-flex py-2 justify-content-between">
       <li>
-        <%= current_user.likes?(post.id) %>       
+    
         <%= button_tag content_tag(:i,'',class:"fa fa-heart-o"),
                     data: { url: like_path(id: post.id) },
                     class: "like-btn text-reset#{ " hide" if current_user.likes?(post.id) }",
@@ -30,7 +30,7 @@
                     class: "unlike-btn text-reset#{ " hide" unless current_user.likes?(post.id) }",
                     remote: true
                     %>
-        <span> <%= post.id %> </span>
+        <span> <%= post.like_ct %> </span>
       </li>
       <li>
         <i class="fa fa-comment-o"></i> 4
