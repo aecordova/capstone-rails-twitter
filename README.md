@@ -10,7 +10,7 @@
 </p>
 
 ___
-## Description of the project 
+## Description of the project
 
 The purpose of this project is to practice Rails acquired knowledge by building an app called SayIt Where a user can Sign in, share, read, like or comment Posts and follow users to see their posts in this timeline.
 
