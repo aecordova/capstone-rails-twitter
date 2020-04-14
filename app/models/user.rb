@@ -10,6 +10,9 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  has_one_attached :profile_img
+  has_one_attached :cover_img
+
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   has_many :posts
@@ -25,6 +28,10 @@ class User < ApplicationRecord
   has_many :followers, through: :followed_bys, source: :user
 
   scope :most_recent, -> { order('created_at desc') }
+
+  def profile_pic_url
+     self.profile_img.attachment.service_url
+  end
 
   def recommend_follows
     User.where('id NOT IN (?)', (follow_list << id)).most_recent

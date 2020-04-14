@@ -19,11 +19,4 @@ class SessionsController < ApplicationController
     redirect_to login_path
   end
 
-  private
-
-  def go_home_if_logged_in
-    return unless logged_in?
-
-    redirect_to home_path
-  end
 end
