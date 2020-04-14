@@ -11,8 +11,10 @@ class User < ApplicationRecord
   has_many :comments
 
   has_many :follows, class_name: 'UserFollow'
+  has_many :followed_bys, class_name: 'UserFollow', foreign_key: 'followed_user_id'
+
   has_many :followed_users, through: :follows, source: :followed_user
-  has_many :followers, through: :follows, source: :user
+  has_many :followers, through: :followed_bys, source: :user
 
 
   def timeline_posts
