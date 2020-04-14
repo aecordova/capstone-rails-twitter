@@ -37,12 +37,16 @@ $(document).on('turbolinks:load', function () {
     $.ajax(this.dataset.url.toString(), {
       method: 'post',
       dataType: 'script',
-      success: function () {
+      success: function (data) {
         $('.like-btn').hide();
         $('.unlike-btn').removeClass("hide");
         $('.unlike-btn').show();
+        console.log(data)
       }
-    });
+    })
+    // .done(function(data){
+    //   console.log(data)
+    // });
   });
   
   $(".unlike-btn").click(function (e) {

@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   
   has_many :post_likes
   has_many :likers, through: :post_likes, source: :user
+  has_many :comments
 
   scope :newest_first, ->{ order('created_at desc') }
 

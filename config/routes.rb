@@ -23,5 +23,7 @@ Rails.application.routes.draw do
   post '/like', to: 'post_likes#create'
   delete '/like', to: 'post_likes#destroy'
 
+  post '/new_comment', to: 'comments#create'
+
 end
 

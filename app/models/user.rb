@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :post_likes
   has_many :liked_posts, through: :post_likes, source: :post
 
+  has_many :comments
+
   has_many :follows, class_name: 'UserFollow'
   has_many :followed_users, through: :follows, source: :followed_user
   has_many :followers, through: :follows, source: :user
@@ -34,6 +36,10 @@ class User < ApplicationRecord
     follows.map(&:followed_user_id)
   end
 
+  def follower_ct 
+    followers.count
+  end
+
   def like(post_id)
     return unless Post.where(id: post_id).exists?
 
@@ -48,5 +54,9 @@ class User < ApplicationRecord
 
   def likes?(post_id)
     post_likes.where(post_id: post_id).exists?
+  end
+
+  def comment(post_id, content)
+    comments.build(post_id, content)
   end
 end
