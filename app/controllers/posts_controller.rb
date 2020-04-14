@@ -1,9 +1,7 @@
-# frozen_string_literal: true
-
 class PostsController < ApplicationController
   before_action :login_first, only: [:index]
   def index
-    timeline_posts
+    t_posts
   end
 
   def create
@@ -23,11 +21,13 @@ class PostsController < ApplicationController
     params.require(:post).permit(:content)
   end
 
-  def timeline_posts
+  def t_posts
     @t_posts ||= current_user.timeline_posts
   end
+
   def login_first
     return if logged_in?
+
     redirect_to login_path
   end
 end

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class PostLikesController < ApplicationController
   def create
     if current_user.like(params[:id])

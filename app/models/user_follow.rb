@@ -1,5 +1,5 @@
 class UserFollow < ApplicationRecord
-  belongs_to :user 
+  belongs_to :user
   belongs_to :followed_user, class_name: 'User'
 
   def self.mk_follower(user_id, f_user_id)
