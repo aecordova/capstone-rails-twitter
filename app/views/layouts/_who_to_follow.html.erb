@@ -1,12 +1,13 @@
 <header>
   <nav id ="sect_header_nav" class="navbar text-white justify-content-start">
-    <span>
-      Who To Follow?
+    <span >
+      > Who To Follow?
     </span>
   </nav>
 </header>
 
 <div class= "border-top">
+  <%=content_tag :p, "No new users to follow", class:"py-2 text-center" unless current_user.recommend_follows.any? %>
   <% current_user.recommend_follows.each do |u|%>
     <div class="py-1 pl-2 d-flex align-items-center border-bottom border-light">
       <div class="badge_pic text-center">

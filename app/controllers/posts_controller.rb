@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  before_action :login_first, only: [:index]
   def index
     timeline_posts
   end
@@ -24,5 +25,9 @@ class PostsController < ApplicationController
 
   def timeline_posts
     @t_posts ||= current_user.timeline_posts
+  end
+  def login_first
+    return if logged_in?
+    redirect_to login_path
   end
 end

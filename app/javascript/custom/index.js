@@ -9,24 +9,27 @@ $(document).on('turbolinks:load', function () {
 
   $(".follow-btn").click(function (e) {
     e.preventDefault();
+    let fol = ".fol-"+this.dataset.id.toString();
+    let ufol = ".ufol-"+this.dataset.id.toString();
+
     $.ajax(this.dataset.url.toString(), {
       method: 'post',
       success: function () {
-        $('.follow-btn').hide();
-        $('.unfollow-btn').removeClass("hide");
-        $('.unfollow-btn').show();
+        $(fol).toggleClass("d-none");
+        $(ufol).toggleClass("d-none");
       }
     });
   });
 
   $(".unfollow-btn").click(function (e) {
+    let fol = ".fol-"+this.dataset.id.toString();
+    let ufol = ".ufol-"+this.dataset.id.toString();
     e.preventDefault();
     $.ajax(this.dataset.url.toString(), {
       method: 'delete',
       success: function () {
-        $('.unfollow-btn').hide();
-        $('.follow-btn').removeClass("hide");
-        $('.follow-btn').show();
+        $(ufol).toggleClass("d-none");
+        $(fol).toggleClass("d-none");
       }
     });
   });

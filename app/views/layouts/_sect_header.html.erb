@@ -1,7 +1,18 @@
 <header>
   <nav id ="sect_header_nav" class="navbar bg-light text-white justify-content-start">
-    <span>
-      <%= yield(:sect_header) %>
+    <span class="d-flex justify-content-between w-100 px-5">
+      <div><%= yield(:sect_header) %></div>
+      <% if yield(:location) == 'signup' %>
+      <div>
+        <span class = "text-light pr-3" >Already have an account?</span>
+        <%= link_to 'Login', login_path, class: "btn btn-outline-light rounded-pill" %>
+      </div>
+      <% elsif yield(:location) == 'login' %>
+      <div>
+        <span class = "text-light pr-3" >Want to create a new Account?</span>
+        <%= link_to 'Sign Up', signup_path, class: "btn btn-outline-light rounded-pill" %>
+      </div>
+      <% end %>
     </span>
   </nav>
 </header>

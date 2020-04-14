@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  before_action :login_first, only: [:show]
   def new; end
 
   def create
@@ -23,5 +23,11 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :password, :password_confirmation)
   end
+  
+  def login_first
+    return if logged_in?
+    redirect_to login_path
+  end
+
 
 end
