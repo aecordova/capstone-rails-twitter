@@ -16,43 +16,51 @@ class User < ApplicationRecord
   has_many :followed_users, through: :follows, source: :followed_user
   has_many :followers, through: :followed_bys, source: :user
 
+  scope :most_recent, ->{ order('created_at desc') }
 
-  def timeline_posts
-    Post.where("user_id IN (?)", follow_list << id).newest_first
+  def recommend_follows
+    User.where("id NOT IN (?)", (follow_list << id) ).most_recent
   end
 
+  
   def follow(user_id)
     return unless User.where(id: user_id).exists?
-
+    
     UserFollow.mk_follower(id, user_id)
   end
-
+  
   def follows?(user_id)
     follows.where(followed_user_id: user_id).exists?
   end
-
+  
   def unfollow(user_id)
     return unless User.where(id: user_id).exists?
-
+    
     UserFollow.rm_follower(id, user_id)
   end
-
+  
   def follow_list
+    return [] unless follows.exists?
+    
     follows.map(&:followed_user_id)
   end
-
+  
   def follower_ct 
     followers.count
   end
-
+  
   def following_ct
     follows.count
   end
 
+  def timeline_posts
+    Post.where("user_id IN (?)", follow_list << id).newest_first
+  end
+  
   def post_ct
     posts.count
   end
-
+  
   def like(post_id)
     return unless Post.where(id: post_id).exists?
 
