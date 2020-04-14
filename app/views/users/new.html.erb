@@ -13,6 +13,7 @@
     <%= form_with model: User.new, url: signup_path, local:true do |f| %>
       <div class="form-group">
         <%= f.text_field 'username', placeholder: "username", class: 'form-control bg-light text-white rounded-pill text-center' %> 
+        <%= f.email_field 'email', placeholder: "email", class: 'form-control bg-light text-white rounded-pill text-center' %> 
         <%= f.password_field 'password', placeholder: "password", class: 'form-control bg-light text-white rounded-pill text-center' %> 
         <%= f.password_field 'password_confirmation', placeholder: "confirm password", class: 'form-control bg-light text-white rounded-pill text-center' %> 
       </div>

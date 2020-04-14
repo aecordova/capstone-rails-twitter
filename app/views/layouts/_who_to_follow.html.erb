@@ -1,11 +1,8 @@
 <header>
   <nav id ="sect_header_nav" class="navbar text-white justify-content-start">
-    <span >
-      > Who To Follow?
-    </span>
+    <div class = "h4" ><b>> Who to follow?</b></div>
   </nav>
 </header>
-
 <div class= "border-top">
   <%=content_tag :p, "No new users to follow", class:"py-2 text-center" unless current_user.recommend_follows.any? %>
   <% current_user.recommend_follows.each do |u|%>
@@ -22,15 +19,15 @@
         <div class ="stats d-flex align-items-center">
           <small class= "px-2">Posts: <b><%= u.post_ct %></small></b>|
           <small class= "px-2">Followers: <b><%= u.follower_ct %></small></b>
-          </b>
-        </div>
-        <small class="pl-2 font-weight-bold text-secondary">
-          <%= "Joined: " + time_ago_in_words(u.created_at) %> ago
-        </small>
+        </b>
       </div>
-      <div class = "mx-auto">
-        <%= render 'shared/fol_unfol_btn', u: u %>
-      </div>
+      <small class="pl-2 font-weight-bold text-secondary">
+        <%= "Joined: " + time_ago_in_words(u.created_at) %> ago
+      </small>
     </div>
-  <% end %>
+    <div class = "mx-auto">
+      <%= render 'shared/fol_unfol_btn', u: u %>
+    </div>
+  </div>
+<% end %>
 </div>
