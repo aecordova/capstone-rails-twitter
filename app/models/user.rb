@@ -43,6 +43,14 @@ class User < ApplicationRecord
     followers.count
   end
 
+  def following_ct
+    follows.count
+  end
+
+  def post_ct
+    posts.count
+  end
+
   def like(post_id)
     return unless Post.where(id: post_id).exists?
 

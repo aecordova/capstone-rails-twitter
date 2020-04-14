@@ -13,7 +13,14 @@
       </h2>
       <%= render('shared/fol_unfol_btn', u: @user) unless @user == current_user%>
     </div>
-    <h4 class="text-light-gray"><%= @user.username %></h4>
+    <div clas="d-flex">
+      <h4 class="text-light-gray"><%= @user.username %></h4>
+      <div class ="stats d-flex justify-content-center">
+        <div class= "px-2">Posts: <b><%= @user.post_ct %></div></b>|
+        <div class= "px-2">Followers: <b><%= @user.follower_ct %></div></b>|
+        <div class= "px-2">Following: <b><%= @user.following_ct %></div></b>
+      </div>
+    </div>
     <p><%= @user.bio %></p>
     <div class = "d-flex justify-content-end">
       <% unless @user.location.nil? %>
@@ -35,8 +42,8 @@
     </div>
   </div>
 </div>
-  <div>
-    <% @u_posts.each do |p| %>
-      <%= render 'shared/post', post: p %>
-    <% end %>
-  </div>
+<div>
+  <% @u_posts.each do |p| %>
+    <%= render 'shared/post', post: p %>
+  <% end %>
+</div>
