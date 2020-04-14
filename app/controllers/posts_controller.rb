@@ -24,5 +24,4 @@ class PostsController < ApplicationController
   def t_posts
     @t_posts ||= current_user.timeline_posts
   end
-
 end

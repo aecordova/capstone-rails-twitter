@@ -30,7 +30,7 @@ class User < ApplicationRecord
   scope :most_recent, -> { order('created_at desc') }
 
   def profile_pic_url
-     self.profile_img.attachment.service_url
+    profile_img.attachment.service_url
   end
 
   def recommend_follows
