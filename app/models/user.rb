@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   has_secure_password
 
+  validates :username, presence: true, length: { in: 3..31 }, uniqueness: true
+  validates :email, presence: true
+
   has_many :posts
   has_many :post_likes
   has_many :liked_posts, through: :post_likes, source: :post
@@ -56,7 +59,7 @@ class User < ApplicationRecord
     post_likes.where(post_id: post_id).exists?
   end
 
-  def comment(post_id, content)
-    comments.build(post_id, content)
+  def comment(post_id, comment)
+    comments.build(post_id, comment)
   end
 end

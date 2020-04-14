@@ -1,6 +1,5 @@
 $(document).on('turbolinks:load', function () {
-  $('.unfollow-btn').hover(
-    function () {
+  $('.unfollow-btn').hover(function () {
       $(this).html('Unfollow')
     },
     function () {
@@ -34,32 +33,43 @@ $(document).on('turbolinks:load', function () {
 
   $(".like-btn").click(function (e) {
     e.preventDefault();
+    let lp = "."+this.dataset.lp.toString();
+    let ulp = ".u"+this.dataset.lp.toString();
+    
     $.ajax(this.dataset.url.toString(), {
       method: 'post',
       dataType: 'script',
-      success: function (data) {
-        $('.like-btn').hide();
-        $('.unlike-btn').removeClass("hide");
-        $('.unlike-btn').show();
-        console.log(data)
+      success: function () {
+        $(lp).toggleClass('d-none');
+        $(ulp).toggleClass('d-none');
       }
-    })
-    // .done(function(data){
-    //   console.log(data)
-    // });
+    });
   });
-  
+
   $(".unlike-btn").click(function (e) {
     e.preventDefault();
-    //console.log(this.dataset.url)
+    let lp = "."+this.dataset.lp.toString();
+    let ulp = ".u"+this.dataset.lp.toString();
+
     $.ajax(this.dataset.url.toString(), {
       method: 'delete',
       dataType: 'script',
-      success: function(){
-        $('.unlike-btn').hide();
-        $('.like-btn').removeClass("hide");
-        $('.like-btn').show();
+      success: function () {
+        $(ulp).toggleClass('d-none');
+        $(lp).toggleClass('d-none');
       }
     });
+  });
+  
+  $(".comment-btn").click(function(e){
+    e.preventDefault();
+    let frm = "."+this.dataset.frm.toString();
+    $(frm).toggleClass('d-none d-block')
+  });
+
+  $(".show-comments").click(function(e){
+    e.preventDefault();
+    let comm = "."+this.dataset.comm.toString();
+    $(comm).toggleClass('d-none d-block')
   });
 });

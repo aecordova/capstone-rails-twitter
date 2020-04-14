@@ -4,10 +4,10 @@
     <%= image_tag 'https://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic-300x300.png' %>
   </div>
   <div class="px-1 col-11">
-    <%= form_with model: Comment.new, url: new_comment_path , remote: true do |f| %>
+    <%= form_with model: Comment.new, url: new_comment_path , local: true do |f| %>
       <div>
         <%= f.hidden_field :post_id, value: post_id %>
-        <%= f.text_area :content, placeholder: "Comment", class: 'form-control bg-light text-white', rows:'2' %>
+        <%= f.text_area :comment, placeholder: "Comment", class: 'form-control bg-light text-white', rows:'2' %>
       </div>
       <div class="d-flex justify-content-end">
         <%= f.submit 'Submit', class: 'btn btn-outline-success mt-1 rounded-pill'%>

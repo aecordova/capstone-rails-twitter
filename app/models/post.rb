@@ -10,4 +10,8 @@ class Post < ApplicationRecord
   def like_ct
     post_likes.count
   end
+
+  def comment_ct
+    comments.count
+  end
 end
