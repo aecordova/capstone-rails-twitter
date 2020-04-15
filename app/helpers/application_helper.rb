@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def bs_class_for(flash_type) 
+  def bs_class_for(flash_type)
     case flash_type
     when 'success'
       'alert-success'
@@ -9,6 +9,6 @@ module ApplicationHelper
       'alert-info'
     else
       flash_type.to_s
-    end 
+    end
   end
 end

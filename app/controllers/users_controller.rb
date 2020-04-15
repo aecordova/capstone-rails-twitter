@@ -8,11 +8,10 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user&.update(profile_img: params[:user][:profile_img])
-      redirect_back fallback_location: current_user
     else
-      flash[:error] = "Could not change picture"
-      redirect_back fallback_location: current_user
+      flash[:error] = 'Could not change picture'
     end
+    redirect_back fallback_location: current_user
   end
 
   def create
