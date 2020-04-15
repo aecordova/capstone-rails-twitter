@@ -16,13 +16,18 @@ body {
     display: none;
   }
 
+  .main-img {
+    height: 200px;
+
+  }
+
   header {
     .nav-container {
       nav {
         img {
           margin: 0 auto;
-          height: 60px;
-          width: 60px;
+          height: 80px;
+          width: 80px;
         }
         a,span {
           font-size: 20px;
