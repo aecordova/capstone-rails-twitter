@@ -7,7 +7,7 @@
     <b>SayIt!</b>
   </h1>
   <span>Create your account:</span>
-  <div class="my-3 text-center col-md-4">
+  <div class="my-3 text-center col-md-4 col-sm-6 col-lg-3">
     <%= form_with model: User.new, url: signup_path, local:true do |f| %>
       <% if @user&.errors.any? %>
         <% @user.errors.full_messages.each do |msg| %>

@@ -1,11 +1,11 @@
 <div class= 'nav-container col-7 px-0'>
   <nav class="navbar">
-    <%= link_to image_tag("logo.png"), home_path, class: 'nav-brand' %>
+    <%= link_to image_tag("logo.png"), home_path, class: ' mt-2 pl-2 nav-brand' %>
   </nav>
-  <nav class="nav nav-pills py-2 flex-column">
-    <%= link_to content_tag(:i,'', class:"fa fa-home")+"Home", home_path ,class: 'text-white pr-4 nav-link rounded-pill' %>
-    <%= link_to content_tag(:i,'', class:"fa fa-user")+"Profile", current_user ,class: 'text-white pr-4 nav-link rounded-pill' %>
-    <%= link_to content_tag(:i,'', class:"fa fa-sign-out")+"Log Out", logout_path , class: 'text-white pr-4 nav-link rounded-pill' %>
+  <nav class="nav nav-pills mt-3 flex-column">
+    <%= link_to content_tag(:i,'', class:"fa fa-home")+"Home", home_path ,class: 'text-white mb-3 pr-4 nav-link rounded-pill' %>
+    <%= link_to content_tag(:i,'', class:"fa fa-user")+"Profile", current_user ,class: 'text-white mb-3 pr-4 nav-link rounded-pill' %>
+    <%= link_to content_tag(:i,'', class:"fa fa-sign-out")+"Log Out", logout_path , class: 'text-white mb-3 pr-4 nav-link rounded-pill' %>
     <%# <a class="nav-link rounded-pill" href="#">
       <i class="fa fa-at"></i> Connect
     </a> %>

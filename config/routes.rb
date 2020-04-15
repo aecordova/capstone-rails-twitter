@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     end
   end
 
+  root 'posts#index'
+
   resources :users, only: [:show]
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
