@@ -3,7 +3,7 @@
     <div class = "h4" ><b>> Who to follow?</b></div>
   </nav>
 </header>
-<div class= "border-top">
+<div class= "border-top who-to-follow-section">
   <%=content_tag :p, "No new users to follow", class:"py-2 text-center" unless current_user.recommend_follows.any? %>
   <% current_user.recommend_follows.each do |u|%>
     <div class="py-1 pl-2 d-flex align-items-center border-bottom border-light">
