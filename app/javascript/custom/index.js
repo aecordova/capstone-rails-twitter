@@ -75,4 +75,21 @@ $(document).on('turbolinks:load', function () {
     let comm = "."+this.dataset.comm.toString();
     $(comm).toggleClass('d-none d-block')
   });
+  
+  $('.js-upl').change(function (e){
+    let filename = e.target.files[0].name;
+    $('.js-upl-lbl').html("File: " + filename)
+  })
+  
+  $('#profile_pic').hover(function(){
+    $('.edit-icon').toggleClass("d-none")   
+  })
+  
+  $('.edit-icon').click(function(){
+    $('.change-pic').toggleClass("d-none")   
+  })
+
 });
+
+
+

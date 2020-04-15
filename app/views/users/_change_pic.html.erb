@@ -1,0 +1,13 @@
+ <%= form_with model: @user, class:"change-profile-pic-form mx-auto", local: true do |f| %>
+      <%= content_tag :div,'',class:"input-group px-2 py-2 rounded-pill border border-light" do %>
+        <%= f.file_field :profile_img, id: "upl-profile-pic", class: "js-upl form-control border-0"%>
+        <%= f.label "Choose profile picture", for: "upl-profile-pic", id: "upl-profile-pic-lbl", class: "js-upl-lbl font-weight-light text-muted" %>
+        <%= content_tag :div,'',class:"input-group-append" do %>
+          <label for="upl-profile-pic" class="btn btn-light m-0 rounded-pill px-4">
+            <i class="fa fa-cloud-upload mr-2 text-muted"></i>
+            <small class="font-weight-bold text-muted">Choose file</small>
+          </label>
+          <%= f.submit "Update", class:"js-upl-btn btn btn-outline-success rounded-pill" %>
+        <% end %>
+      <% end %>
+    <% end %>

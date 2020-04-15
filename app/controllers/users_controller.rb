@@ -5,6 +5,16 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def update
+    @user = User.find(params[:id])
+    if @user&.update(profile_img: params[:user][:profile_img])
+      redirect_back fallback_location: current_user
+    else
+      flash[:error] = "Could not change picture"
+      redirect_back fallback_location: current_user
+    end
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save

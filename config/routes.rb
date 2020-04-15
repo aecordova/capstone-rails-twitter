@@ -8,7 +8,8 @@ Rails.application.routes.draw do
 
   root 'posts#index'
 
-  resources :users, only: [:show]
+  resources :users, only: [:show,:update]
+  
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
 

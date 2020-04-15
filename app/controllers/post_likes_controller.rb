@@ -1,17 +1,17 @@
 class PostLikesController < ApplicationController
   def create
     if current_user.like(params[:id])
-      render json: current_user
+      render json: { liked?: true }
     else
-      puts @message = 'failure'
+      render json: { liked?: false }
     end
   end
 
   def destroy
     if current_user.unlike(params[:id])
-      render json: current_user
+      render json: { liked?: false }
     else
-      render json: { status: 304 }
+      render json: { liked?: true }
     end
   end
 end
