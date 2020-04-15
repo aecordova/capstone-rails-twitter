@@ -7,10 +7,10 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user&.authenticate(params[:password])
       login @user
-      flash[:success] = 'Welcome! to Say it'
+      flash[:success] = 'Welcome to SayIt!'
       redirect_to home_path
     else
-      flash[:error]= "Please check your information and try again"
+      flash[:error] = 'Please check your information and try again'
       render :new
     end
   end
