@@ -5,12 +5,13 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(username: params[:username])
-    puts 'User: ' + @user&.username.to_s
     if @user&.authenticate(params[:password])
       login @user
+      flash[:success] = 'Welcome! to Say it'
       redirect_to home_path
     else
-      render html: 'not logged in'
+      flash[:error]= "Please check your information and try again"
+      render :new
     end
   end
 

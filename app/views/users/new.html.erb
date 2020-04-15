@@ -1,23 +1,27 @@
 <%= provide(:location, 'signup') %>
-
 <div class="pt-3  d-flex flex-column align-items-center">
   <a class="navbar-brand my-3" href="#">
     <img src="https://getbootstrap.com/docs/4.1/assets/img/bootstrap-stack.png" width="80" height="80" alt="">
   </a>
   <h1 class = 'h1 text-center'>
-    <span class="h2 px-2">Sign up to </span> 
+    <span class="h2 px-2">Welcome to </span>
     <b>SayIt!</b>
   </h1>
-  <span>Create your account:</span>  
+  <span>Create your account:</span>
   <div class="my-3 text-center col-md-4">
     <%= form_with model: User.new, url: signup_path, local:true do |f| %>
+      <% if @user&.errors.any? %>
+        <% @user.errors.full_messages.each do |msg| %>
+          <div class="text-danger"><%= msg %></div>
+        <% end %>
+      <% end %>
       <div class="form-group">
-        <%= f.text_field 'username', placeholder: "username", class: 'form-control bg-light text-white rounded-pill text-center' %> 
-        <%= f.email_field 'email', placeholder: "email", class: 'form-control bg-light text-white rounded-pill text-center' %> 
-        <%= f.password_field 'password', placeholder: "password", class: 'form-control bg-light text-white rounded-pill text-center' %> 
-        <%= f.password_field 'password_confirmation', placeholder: "confirm password", class: 'form-control bg-light text-white rounded-pill text-center' %> 
+        <%= f.text_field 'username', placeholder: "username", class: 'form-control bg-light text-white rounded-pill text-center' %>
+        <%= f.email_field 'email', placeholder: "email", class: 'form-control bg-light text-white rounded-pill text-center' %>
+        <%= f.password_field 'password', placeholder: "password", class: 'form-control bg-light text-white rounded-pill text-center' %>
+        <%= f.password_field 'password_confirmation', placeholder: "confirm password", class: 'form-control bg-light text-white rounded-pill text-center' %>
       </div>
-        <%= f.submit 'Sign Up!', class: 'btn btn-primary rounded-pill'%> 
+      <%= f.submit 'Sign Up!', class: 'btn btn-outline-success rounded-pill'%>
     <% end %>
   </div>
 </div>
