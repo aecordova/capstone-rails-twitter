@@ -1,8 +1,6 @@
 
 <div class= "d-flex">
-  <div class="col-1 pl-2 pr-0 badge_pic">
-    <%= image_tag 'https://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic-300x300.png' %>
-  </div>
+<%= render 'shared/badge_pic', user: current_user %>
   <div class="px-1 col-11">
     <%= form_with model: Post.new, url: posts_path, local:true do |f| %>
       <div>
