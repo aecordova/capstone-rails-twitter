@@ -22,6 +22,6 @@ class PostsController < ApplicationController
   end
 
   def t_posts
-    @t_posts ||= current_user.timeline_posts
+    @t_posts ||= current_user.timeline_posts.includes([:user, :comments])
   end
 end

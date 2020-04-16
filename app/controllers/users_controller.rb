@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @u_posts = @user.posts.newest_first
+    @u_posts = @user.posts.newest_first.includes([:comments])
   end
 
   private

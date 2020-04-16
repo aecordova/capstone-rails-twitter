@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.0'
 
 gem 'aws-sdk-s3', require: false
+gem 'pg'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
@@ -46,7 +47,8 @@ group :development do
   gem 'rubocop'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-
+  gem 'bullet'
+  # gem 'ruby-growl'
 end
 
 group :test do
@@ -58,10 +60,6 @@ group :test do
   gem 'webdrivers'
 end
 
-group :production do
-  gem 'pg'
-  gem 'fog'
-end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
