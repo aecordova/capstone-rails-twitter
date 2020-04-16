@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
-  def new; end
-
   before_action :go_home_if_logged_in, only: %i[new create]
+  
+  def new; end
 
   def create
     @user = User.find_by(username: params[:username])
@@ -16,7 +16,11 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    logout
-    redirect_to login_path
+    if logout
+      flash[:info] = "You have been logged out successfully"
+    else
+      flash[:error] = "Could not terminate the session, please try again"
+    end
+      redirect_to login_path
   end
 end

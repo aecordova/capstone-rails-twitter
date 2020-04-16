@@ -1,12 +1,19 @@
 class UserFollowsController < ApplicationController
   def create
-    @msg = 'Following' if current_user.follow(params[:id])
-    respond_to do |format|
-      format.js { render layout: false }
-    end
+    result = if current_user.follow(params[:id])
+               true
+             else
+               false
+             end
+    render json: { followed: result }
   end
 
   def destroy
-    flash[:success] = 'Aww! no more posts from this user on your timeline' if current_user.unfollow(params[:id])
+    result = if current_user.unfollow(params[:id])
+               false
+             else
+               true
+             end
+    render json: { followed: result }
   end
 end

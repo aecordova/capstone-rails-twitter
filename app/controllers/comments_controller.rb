@@ -3,10 +3,10 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
     if @comment.save
       flash[:success] = 'Comment added successfully'
-      redirect_back fallback_location: home_path
     else
       flash[:danger] = 'Could not add comment'
     end
+      redirect_back fallback_location: home_path
   end
 
   private

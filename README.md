@@ -24,6 +24,8 @@ The purpose of this project is to practice Rails acquired knowledge by building 
 * Ruby on Rails 6
 * HTML5/CSS3/Sass
 * JQuery
+* Postgres
+* AWS S3
 * Capybara
 * RSpec
 
@@ -35,7 +37,7 @@ The purpose of this project is to practice Rails acquired knowledge by building 
 
 #### Live Version:
 
-<!-- You can find a live running version of this app on the following link: [Stay In Touch](https://mighty-basin-95377.herokuapp.com/users/sign_in) -->
+You can find a live running version of this app on the following link: [SayIt!](https://sayit.herokuapp.com/)
 
 #### Instructions for running on local environment:
 
@@ -75,7 +77,8 @@ The purpose of this project is to practice Rails acquired knowledge by building 
    
    * On the right side of the page, you will see recommendations of users to follow, click on the follow button so you can start seeing his posts on your home screen.  
    
-   * To see your profile, click on the Profile Option in the NavBar, there, you will see your info, your posts and stats 
+   * To see your profile, click on the Profile Option in the NavBar, there, you will see your info, your posts and stats
+   * You can change your profile pic by clicking on the button that appears when you hover your profile pic App, the cover is automatically generated 
 
    * To create a Post, go to your home page, fill up the post information and press the button.
 

@@ -8,11 +8,11 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     puts 'Valid post?' + @post.valid?.to_s
     if @post.save
-      puts 'Post saved:' + @post.content.to_s
-      redirect_to home_path
+      flash[:success] = "Post created successfully"
     else
-      render html: 'Post not created'
+      flash[:error] = "Could not create post, please try again later"
     end
+      redirect_back fallback_location: home_path
   end
 
   private
