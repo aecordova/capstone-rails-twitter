@@ -1,0 +1,53 @@
+body {
+  h1, .h1 {
+    font-size: 3rem;
+  }
+  h2, .h2 {
+    font-size: 2rem;
+  }
+  h3, .h3 {
+    font-size: 1.6rem;
+  }
+  h4, .h4 {
+    font-size: 1.3rem;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .main-img {
+    height: 200px;
+
+  }
+
+  header {
+    .nav-container {
+      nav {
+        img {
+          margin: 0 auto;
+          height: 80px;
+          width: 80px;
+        }
+        a,span {
+          font-size: 20px;
+          font-weight: bold;
+          border-radius: 100%;
+          width: fit-content;
+          .fa {
+            font-size: 25px;
+            margin-right: 5px;
+            width: 30px;
+            text-align: center;
+          }
+        }
+        a:hover {
+          background-color: #282828;
+        }
+    }
+  }
+    #sect_header_nav{
+      height: 74px;
+    }
+  }
+}

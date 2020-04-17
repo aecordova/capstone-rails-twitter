@@ -1,0 +1,67 @@
+<div class="post row m-0 py-2 border-bottom border-light">
+  <%= render 'shared/badge_pic', user: post.author %>
+  <div class="col-11 pl-2 pr-0">
+    <div class= "post-info">
+      <span class="post-name h4 font-weight-bold text-white">
+        <%= link_to post.author.full_name || post.author.username, post.author, class:'text-decoration-none'%>
+      </span>
+      <span class="post-username">
+        <%= post.author.username unless post.author.full_name.nil? %>
+      </span>
+      <span class="post-time font-weight-bold text-light">
+        - <%= time_ago_in_words(post.created_at) %> ago
+      </span>
+    </div>
+    <div>
+      <%= post.text %>
+    </div>
+    <ul class = "post-actions nav mx-auto col-6 d-flex py-2 justify-content-between">
+      <li class="like-btns">
+        <%= button_tag content_tag(:i,'',class:"fa fa-heart-o"),
+                    data: { url: like_path(id: post.id),
+                            lp: "lp-"+post.id.to_s },
+                    class: "like-btn lp-#{post.id} text-reset#{ " d-none" if current_user.likes?(post.id) }",
+                    remote: true
+                    %>
+        <%= button_tag content_tag(:i,'',class:"fa fa-heart"),
+                    data: { url: like_path(id: post.id),
+                            lp: "lp-"+post.id.to_s }, 
+                    class: "unlike-btn ulp-#{post.id} text-reset#{ " d-none" unless current_user.likes?(post.id) }",
+                    remote: true
+                    %>
+        <span class="lk_ct"><%= post.like_ct %></span>
+      </li>
+      <li class="comment-btns">
+        <%= button_tag content_tag(:i,'',class:"fa fa-comment-o"),
+        data: { frm: "frm-"+post.id.to_s},
+        class: "comment-btn text-reset" %>
+        <%= post.comment_ct %>
+        <%= button_tag content_tag(:i,'',class:"fa fa-caret-down"), 
+        data: { comm: "comm-"+post.id.to_s},
+        class:"show-comments text-reset"%>
+      </li>
+    </ul>
+    <div class= "comment-form d-none frm-<%= post.id%>">
+      <%= render 'shared/new_comment', post_id: post.id %>
+    </div>
+    <div class = "comment-section d-none comm-<%= post.id%>">
+      <% post.comments.includes([:user]).each do |c|  %>
+        <div class= 'comment d-flex'>
+          <%= render 'shared/badge_pic', user: c.user %>
+          <div class=col-10>
+            <span class="post-name font-weight-bold text-white">
+              <%= link_to c.user.full_name || c.user.username, c.user, class:'text-decoration-none'%>
+            </span>
+            <span>
+              <%= c.user.username unless c.user.full_name.nil? %>
+            </span>
+            <span class="font-weight-bold text-light">
+              - <%= time_ago_in_words(c.created_at) %> ago
+            </span>
+            <p><%= c.comment %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<% provide(:sect_header, "> Home") %>
+<div class="py-2 border-bottom border-light">
+  <%= render 'shared/new_post' %>
+</div>
+<div>
+  <% @t_posts.each do |p|  %>
+  <%= render 'shared/post', post: p %>
+  <% end %>
+</div>

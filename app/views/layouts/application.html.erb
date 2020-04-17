@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render 'layouts/head' %>
+    <body>
+      <div class= "container-fluid d-flex">
+        <%= content_tag :header, render('layouts/header'), 
+            class:'col-3 px-0 d-flex flex-column align-items-end fixed-top' if logged_in? %>
+        <%= content_tag :div, '', class:'col-3' if logged_in? %>
+        <div class="main px-0 mx-auto w-100">
+          <%= render 'layouts/sect_header' %>
+            <%= render partial:'shared/messages', flash: flash %>
+          <%= yield %>
+        </div>
+        <%= content_tag :div, render('layouts/who_to_follow'), class:'col-3' if logged_in? %>
+      </div>
+      <%= render 'layouts/js_for_bootstrap' %>
+    </body>
+  </html>

@@ -1,0 +1,13 @@
+<div class "d-flex">
+  <%= button_tag 'Following', 
+               data: { url: follow_path(id: u.id),
+                       id: u.id }, 
+               class: "unfollow-btn ufol-#{u.id} btn btn-outline-secondary rounded-pill js-following#{ " d-none" unless current_user.follows? u }",
+               remote: true %>
+
+  <%= button_tag 'Follow', 
+               data: { url: follow_path(id: u.id),
+                       id: u.id }, 
+               remote: true, 
+               class: "follow-btn fol-#{u.id} btn btn-outline-success rounded-pill js-follow#{ " d-none" if current_user.follows? u }"  %>
+</div>

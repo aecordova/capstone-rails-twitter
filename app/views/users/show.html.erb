@@ -1,0 +1,57 @@
+<% provide(:sect_header, "> Profile") %>
+<div id="profile">
+  <div id="cover_pic">
+    <%= image_tag 'https://picsum.photos/600/250'%>
+  </div>
+  <div id="profile_pic">
+    <%= image_tag @user.photo.attached? ? 
+        @user.photo : 'https://thesocietypages.org/socimages/files/2009/05/nopic_192.gif' %>
+    <%= content_tag :i, '', class: "fa fa-pencil edit-icon d-none" %>
+  </div>
+  <div class="change-pic d-none">
+   <%= render 'users/change_pic' %>
+  </div>
+  <div id="profile_data" class=" profile-data p-2 border-bottom border-light">
+    <div class="text-white d-flex justify-content-between align-items-center">
+      <h2>
+        <b><%= @user.full_name || @user.username %></b>
+      </h2>
+      <%= render('shared/fol_unfol_btn', u: @user) unless @user == current_user%>
+    </div>
+    <div clas="d-flex">
+      <h4 class="text-light-gray"><%= @user.username %></h4>
+      <div class ="stats d-flex justify-content-center">
+        <div class= "px-2">Posts: <b><%= @user.post_ct %></div>
+        </b>|
+        <div class= "px-2">Followers: <b><%= @user.follower_ct %></div>
+        </b>|
+        <div class= "px-2">Following: <b><%= @user.following_ct %></div>
+        </b>
+      </div>
+    </div>
+    <p><%= @user.bio %></p>
+    <div class = "d-flex justify-content-end">
+      <% unless @user.location.nil? %>
+        <%= content_tag :span, class: 'pr-3' do %>
+          <%= content_tag :i, '', class:  'fa fa-map-marker' %>
+          <%= @user.location %>
+        <% end  %>
+      <% end %>
+      <% unless @user.birth_date.nil? %>
+        <%= content_tag :span, class: 'pr-3' do %>
+          <%= content_tag :i, '', class:  'fa fa-birthday_cake' %>
+          <%= @user.birth_date %>
+        <% end  %>
+      <% end %>
+      <span class= "pr-3">
+        <i class="fa fa-calendar"></i>
+        Joined <%= time_ago_in_words(@user.created_at) %> ago.
+      </span>
+    </div>
+  </div>
+</div>
+<div>
+  <% @u_posts.each do |p| %>
+    <%= render 'shared/post', post: p %>
+  <% end %>
+</div>
