@@ -7,8 +7,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user&.update(profile_img: params[:user][:profile_img])
+    if current_user.update(photo_params)
       flash[:success] = 'Profile pic updated!'
     else
       flash[:error] = 'Could not update profile pic'
@@ -28,13 +27,21 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @u_posts = @user.posts.includes([:comments, :post_likes]).newest_first
+    @user = User.find(permitted[:id])
+    @u_posts = @user.posts.includes(%i[comments post_likes]).newest_first
   end
 
   private
 
+  def permitted
+    params.permit(:id)
+  end
+
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
+  end
+  
+  def photo_params
+    params.require(:user).permit(:photo)
   end
 end

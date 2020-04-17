@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     else
       flash[:danger] = 'Could not add comment'
     end
-      redirect_back fallback_location: home_path
+    redirect_back fallback_location: home_path
   end
 
   private

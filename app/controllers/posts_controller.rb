@@ -7,11 +7,11 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      flash[:success] = "Post created successfully"
+      flash[:success] = 'Post created successfully'
     else
-      flash[:error] = "Could not create post, please try again later"
+      flash[:error] = 'Could not create post, please try again later'
     end
-      redirect_back fallback_location: home_path
+    redirect_back fallback_location: home_path
   end
 
   private

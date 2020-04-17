@@ -1,6 +1,6 @@
 class FollowingsController < ApplicationController
   def create
-    result = if current_user.follow(params[:id])
+    result = if current_user.follow(follow_params)
                true
              else
                false
@@ -9,11 +9,18 @@ class FollowingsController < ApplicationController
   end
 
   def destroy
-    result = if current_user.unfollow(params[:id])
+    result = if current_user.unfollow(follow_params)
                false
              else
                true
              end
     render json: { followed: result }
   end
+  
+  private
+
+  def follow_params
+    params.permit(:id)
+  end
+
 end

@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  has_one_attached :profile_img
+  has_one_attached :photo
   has_one_attached :cover_img
 
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
@@ -30,7 +30,7 @@ class User < ApplicationRecord
   scope :most_recent, -> { order('created_at desc') }
 
   def profile_pic_url
-    profile_img.attachment.service_url
+    photo.attachment.service_url
   end
 
   def recommend_follows
