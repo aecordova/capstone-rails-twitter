@@ -45,7 +45,7 @@
       <%= render 'shared/new_comment', post_id: post.id %>
     </div>
     <div class = "comment-section d-none comm-<%= post.id%>">
-      <% post.comments.each do |c|  %>
+      <% post.comments.includes([:user]).each do |c|  %>
         <div class= 'comment d-flex'>
           <%= render 'shared/badge_pic', user: c.user %>
           <div class=col-10>

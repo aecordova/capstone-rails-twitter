@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Vistor signs in' do
   background do
-    User.create(name: '@user1', email: 'user1@email.com', password: '123456')
+    User.create(username: '@user1', email: 'user1@email.com', password: '123456')
   end
 
   scenario 'with in-valid email and/or password' do

@@ -4,7 +4,7 @@ RSpec.feature 'Logged in user can : Follow/Unfollow other users' do
   background do
     u = User.create(username: 'user_one', email: 'user_one@email.com', password: '123456')
     User.create(username: 'user_two', email: 'user_two@email.com', password: '123456')
-    u.posts.create(content: 'I am user_one and This is my first post')
+    u.posts.create(text: 'I am user_one and This is my first post')
   end
 
   scenario 'User can follow another user' do

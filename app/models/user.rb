@@ -91,10 +91,6 @@ class User < ApplicationRecord
     post_likes.where(post_id: post_id).exists?
   end
 
-  def comment(post_id, comment)
-    comments.build(post_id, comment)
-  end
-
   private
 
   def downcase_email_username

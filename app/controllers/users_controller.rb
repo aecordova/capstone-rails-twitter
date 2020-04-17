@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(permitted[:id])
-    @u_posts = @user.posts.includes(%i[comments post_likes]).newest_first
+    @u_posts = @user.posts.includes(%i[comments]).newest_first
   end
 
   private

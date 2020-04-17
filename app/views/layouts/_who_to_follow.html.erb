@@ -3,30 +3,30 @@
     <div class = "h4" ><b>> Who to follow?</b></div>
   </nav>
 </header>
-<div class= "border-top who-to-follow-section">
+<div class= "border-top who-to-follow-section justify-content-between">
   <%=content_tag :p, "No new users to follow", class:"py-2 text-center" unless current_user.recommend_follows.any? %>
   <% current_user.recommend_follows.each do |u|%>
-    <div class="py-1 pl-2 d-flex align-items-center border-bottom border-light">
-      <div class="badge_pic text-center">
-        <%= link_to image_tag('https://nwsid.net/wp-content/uploads/2015/05/dummy-profile-pic-300x300.png'), u %>
-      </div>
-      <div>
+    <div class="py-1 d-flex align-items-center border-bottom border-light">
+      <%= render 'shared/badge_pic', user: u%>
+      <div class="pl-4 pr-0 col-10 d-flex w-100 align-items-center">
         <div>
-          <span class="pl-2 font-weight-bold text-white">
-            <%= link_to u.full_name || u.username, u, class:'text-decoration-none text-reset'%>
-          </span>
+          <div>
+            <span class="pl-2 font-weight-bold text-white">
+              <%= link_to u.full_name || u.username, u, class:'text-decoration-none text-reset'%>
+            </span>
+          </div>
+          <div class ="stats d-flex align-items-center">
+            <small class= "px-2">Posts: <b><%= u.post_ct %></small></b>|
+            <small class= "px-2">Followers: <b><%= u.follower_ct %></small></b>
+          </b>
         </div>
-        <div class ="stats d-flex align-items-center">
-          <small class= "px-2">Posts: <b><%= u.post_ct %></small></b>|
-          <small class= "px-2">Followers: <b><%= u.follower_ct %></small></b>
-        </b>
+        <small class="pl-2 font-weight-bold text-secondary">
+          <%= "Joined: " + time_ago_in_words(u.created_at) %> ago
+        </small>
       </div>
-      <small class="pl-2 font-weight-bold text-secondary">
-        <%= "Joined: " + time_ago_in_words(u.created_at) %> ago
-      </small>
-    </div>
-    <div class = "mx-auto">
-      <%= render 'shared/fol_unfol_btn', u: u %>
+      <div class = "mx-auto">
+        <%= render 'shared/fol_unfol_btn', u: u %>
+      </div>
     </div>
   </div>
 <% end %>
