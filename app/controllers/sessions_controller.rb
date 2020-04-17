@@ -23,11 +23,10 @@ class SessionsController < ApplicationController
     end
     redirect_to login_path
   end
-  
+
   private
 
   def session_params
     params.permit(:username, :password)
   end
-
 end

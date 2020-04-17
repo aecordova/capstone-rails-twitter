@@ -16,11 +16,10 @@ class FollowingsController < ApplicationController
              end
     render json: { followed: result }
   end
-  
+
   private
 
   def follow_params
     params.permit(:id)
   end
-
 end
