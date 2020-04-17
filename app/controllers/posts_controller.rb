@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  
   before_action :login_first, only: [:index]
 
   def index
