@@ -1,6 +1,6 @@
 class PostLikesController < ApplicationController
   def create
-    result = if current_user.like(like_params)
+    result = if current_user.like(permitted[:id])
                true
              else
                false
@@ -9,7 +9,7 @@ class PostLikesController < ApplicationController
   end
 
   def destroy
-    result = if current_user.unlike(like_params)
+    result = if current_user.unlike(permitted[:id])
                false
              else
                true
@@ -19,7 +19,7 @@ class PostLikesController < ApplicationController
 
   private
 
-  def like_params
+  def permitted
     params.permit(:id)
   end
 end
