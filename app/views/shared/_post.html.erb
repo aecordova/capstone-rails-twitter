@@ -1,19 +1,19 @@
 <div class="post row m-0 py-2 border-bottom border-light">
-  <%= render 'shared/badge_pic', user: post.user %>
+  <%= render 'shared/badge_pic', user: post.author %>
   <div class="col-11 pl-2 pr-0">
     <div class= "post-info">
       <span class="post-name h4 font-weight-bold text-white">
-        <%= link_to post.user.name || post.user.username, post.user, class:'text-decoration-none'%>
+        <%= link_to post.author.full_name || post.author.username, post.author, class:'text-decoration-none'%>
       </span>
       <span class="post-username">
-        <%= post.user.username unless post.user.name.nil? %>
+        <%= post.author.username unless post.author.full_name.nil? %>
       </span>
       <span class="post-time font-weight-bold text-light">
         - <%= time_ago_in_words(post.created_at) %> ago
       </span>
     </div>
     <div>
-      <%= post.content %>
+      <%= post.text %>
     </div>
     <ul class = "post-actions nav mx-auto col-6 d-flex py-2 justify-content-between">
       <li class="like-btns">
@@ -50,10 +50,10 @@
           <%= render 'shared/badge_pic', user: c.user %>
           <div class=col-10>
             <span class="post-name font-weight-bold text-white">
-              <%= link_to c.user.name || c.user.username, c.user, class:'text-decoration-none'%>
+              <%= link_to c.user.full_name || c.user.username, c.user, class:'text-decoration-none'%>
             </span>
             <span>
-              <%= c.user.username unless c.user.name.nil? %>
+              <%= c.user.username unless c.user.full_name.nil? %>
             </span>
             <span class="font-weight-bold text-light">
               - <%= time_ago_in_words(c.created_at) %> ago

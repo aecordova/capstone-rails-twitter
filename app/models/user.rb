@@ -15,17 +15,17 @@ class User < ApplicationRecord
 
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
-  has_many :posts
+  has_many :posts, foreign_key: 'author_id'
   has_many :post_likes
   has_many :liked_posts, through: :post_likes, source: :post
 
   has_many :comments
 
-  has_many :follows, class_name: 'UserFollow'
-  has_many :followed_bys, class_name: 'UserFollow', foreign_key: 'followed_user_id'
+  has_many :follows, class_name: 'Following', foreign_key: 'follower_id'
+  has_many :followed_bys, class_name: 'Following', foreign_key: 'followed_id'
 
-  has_many :followed_users, through: :follows, source: :followed_user
-  has_many :followers, through: :followed_bys, source: :user
+  has_many :followed_users, through: :follows, source: :followed
+  has_many :followers, through: :followed_bys, source: :follower
 
   scope :most_recent, -> { order('created_at desc') }
 
@@ -40,23 +40,23 @@ class User < ApplicationRecord
   def follow(user_id)
     return unless User.where(id: user_id).exists?
 
-    UserFollow.mk_follower(id, user_id)
+    Following.mk_follower(id, user_id)
   end
 
   def follows?(user_id)
-    follows.where(followed_user_id: user_id).exists?
+    follows.where(followed_id: user_id).exists?
   end
 
   def unfollow(user_id)
     return unless User.where(id: user_id).exists?
 
-    UserFollow.rm_follower(id, user_id)
+    Following.rm_follower(id, user_id)
   end
 
   def follow_list
     return [] unless follows.exists?
 
-    follows.map(&:followed_user_id)
+    follows.map(&:followed_id)
   end
 
   def follower_ct
@@ -68,7 +68,7 @@ class User < ApplicationRecord
   end
 
   def timeline_posts
-    Post.where('user_id IN (?)', follow_list << id).newest_first
+    Post.where('author_id IN (?)', follow_list << id).newest_first
   end
 
   def post_ct

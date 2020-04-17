@@ -4,11 +4,13 @@ module SessionsHelper
   end
 
   def logged_in?
-    !session[:user_id].nil?
+    !session[:user_id].nil? && User.where(id: session[:user_id]).exists?
   end
 
   def current_user
-    User.find(session[:user_id]) if session[:user_id]
+    return unless logged_in?
+    
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
   def logout

@@ -20,8 +20,8 @@ Rails.application.routes.draw do
   resources :posts, only: [:create]
   get '/home', to: 'posts#index'
 
-  post '/follow', to: 'user_follows#create'
-  delete '/follow', to: 'user_follows#destroy'
+  post '/follow', to: 'followings#create'
+  delete '/follow', to: 'followings#destroy'
 
   post '/like', to: 'post_likes#create'
   delete '/like', to: 'post_likes#destroy'

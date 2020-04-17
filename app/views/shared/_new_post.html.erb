@@ -4,7 +4,7 @@
   <div class="px-1 col-11">
     <%= form_with model: Post.new, url: posts_path, local:true do |f| %>
       <div>
-        <%= f.text_area :content, placeholder: "Say something!!", class: 'form-control bg-light text-white', rows:'2' %>
+        <%= f.text_area :text, placeholder: "Say something!!", class: 'form-control bg-light text-white', rows:'2' %>
       </div>
       <div class="d-flex justify-content-end">
         <%= f.submit 'SayIt!', class: 'btn btn-outline-success mt-1 rounded-pill'%>

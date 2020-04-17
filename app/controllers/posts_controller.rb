@@ -6,7 +6,6 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    puts 'Valid post?' + @post.valid?.to_s
     if @post.save
       flash[:success] = "Post created successfully"
     else
@@ -18,10 +17,10 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:text)
   end
 
   def t_posts
-    @t_posts ||= current_user.timeline_posts.includes([:user, :comments])
+    @t_posts ||= current_user.timeline_posts.includes([:comments])
   end
 end
