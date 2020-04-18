@@ -33,36 +33,41 @@ $(document).on('turbolinks:load', function () {
       }
     });
   });
-
+  
   $(".like-btn").click(function (e) {
     e.preventDefault();
-    let lp = "."+this.dataset.lp.toString();
-    let ulp = ".u"+this.dataset.lp.toString();
+    let p_id = this.dataset.pid.toString();
     
-    $.ajax(this.dataset.url.toString(), {
+    let like = $.ajax(this.dataset.url.toString(), {
       method: 'post',
-      dataType: 'script',
-      success: function () {
-        $(lp).toggleClass('d-none');
-        $(ulp).toggleClass('d-none');
-      }
+      dataType: 'script'
     });
+     like.done(function(data){
+       if ($.parseJSON(data).done) {
+         $(".lp-" + p_id).toggleClass('d-none');
+         $(".ulp-" + p_id).toggleClass('d-none');
+         $(".lct-" + p_id).html($.parseJSON(data).likes)
+       }
+     });
   });
 
   $(".unlike-btn").click(function (e) {
     e.preventDefault();
-    let lp = "."+this.dataset.lp.toString();
-    let ulp = ".u"+this.dataset.lp.toString();
-
-    $.ajax(this.dataset.url.toString(), {
+    let p_id = this.dataset.pid.toString();
+ 
+    let like = $.ajax(this.dataset.url.toString(), {
       method: 'delete',
-      dataType: 'script',
-      success: function () {
-        $(ulp).toggleClass('d-none');
-        $(lp).toggleClass('d-none');
-      }
+      dataType: 'script'
     });
+     like.done(function(data){
+       if ($.parseJSON(data).done) {
+        $(".lp-" + p_id).toggleClass('d-none');
+        $(".ulp-" + p_id).toggleClass('d-none');
+        $(".lct-" + p_id).html($.parseJSON(data).likes)
+      }
+     });
   });
+
   
   $(".comment-btn").click(function(e){
     e.preventDefault();

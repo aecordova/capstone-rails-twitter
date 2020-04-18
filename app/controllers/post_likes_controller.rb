@@ -1,20 +1,20 @@
 class PostLikesController < ApplicationController
   def create
-    result = if current_user.like(permitted[:id])
+    result = if post && current_user.like(post.id)
                true
              else
                false
              end
-    render json: { liked: result }
+    render json: { done: result, likes: post.like_ct }
   end
 
   def destroy
-    result = if current_user.unlike(permitted[:id])
-               false
-             else
+    result = if post && current_user.unlike(post.id)
                true
+             else
+               false
              end
-    render json: { liked: result }
+    render json: { done: result, likes: post.like_ct }
   end
 
   private
@@ -22,4 +22,10 @@ class PostLikesController < ApplicationController
   def permitted
     params.permit(:id)
   end
+
+  def post
+    id = permitted[:id]
+    @post ||= Post.find(id) if Post.exists?(id)
+  end
+
 end

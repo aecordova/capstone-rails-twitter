@@ -19,17 +19,17 @@
       <li class="like-btns">
         <%= button_tag content_tag(:i,'',class:"fa fa-heart-o"),
                     data: { url: like_path(id: post.id),
-                            lp: "lp-"+post.id.to_s },
+                            pid: post.id},
                     class: "like-btn lp-#{post.id} text-reset#{ " d-none" if current_user.likes?(post.id) }",
                     remote: true
                     %>
         <%= button_tag content_tag(:i,'',class:"fa fa-heart"),
                     data: { url: like_path(id: post.id),
-                            lp: "lp-"+post.id.to_s }, 
+                            pid: post.id }, 
                     class: "unlike-btn ulp-#{post.id} text-reset#{ " d-none" unless current_user.likes?(post.id) }",
                     remote: true
                     %>
-        <span class="lk_ct"><%= post.like_ct %></span>
+        <%= content_tag :span, post.like_ct, class: "like-count lct-#{post.id}" %>
       </li>
       <li class="comment-btns">
         <%= button_tag content_tag(:i,'',class:"fa fa-comment-o"),
